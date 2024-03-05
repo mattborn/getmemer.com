@@ -23,7 +23,27 @@ generateButton.addEventListener('click', e => {
       {
         role: 'user',
         content: `Return a single JSON object copying this schema: ${JSON.stringify({
-          meme_text: `rewrite "${base_prompt}" into the visible text for the meme which should be short and pithy like typical memes`,
+          meme_text: `rewrite "${base_prompt}" into the visible text for the meme which should be short and pithy like typical memes and try to stick with one of these: one does not simply X
+          i don't always X, but when I do Y
+          X, X everywhere
+          not sure if X or Y
+          X y u no Y
+          y u no X
+          brace yourself(ves) X
+          X all the Y
+          X that would be great
+          X too damn Y
+          yo dawg X
+          X gonna have a bad time
+          am I the only one around here X
+          what if I told you X
+          X ain't nobody got time for that
+          X I guarantee it
+          X annnnd it's gone
+          X bats an eye Y loses their minds
+          back in my day X
+          X but that's none of my business
+          you get X you get X everybody gets X`,
         })}`,
       },
     ]).then(text => {
