@@ -1,14 +1,30 @@
-const getImagesButton = insert(g('image-wrap'), 'button')
+const getImagesButton = insert(g('search-actions'), 'button')
 getImagesButton.textContent = 'Get images'
 getImagesButton.addEventListener('click', e => {
   g('error-bar').click()
   getImagesButton.disabled = true
   g('image-wrap').classList.add('loading')
 
-  imgflipGet().then(jsonGet => {
-    if (jsonGet.success) {
+  const query = g('search').value
+  if (query) {
+    imgflipSearch(query).then(json => {
+      console.log(json)
+      handleResults(json)
+      getImagesButton.disabled = false
+    })
+  } else {
+    imgflipGet().then(json => {
+      handleResults(json)
+      getImagesButton.disabled = false
+    })
+  }
+})
+
+const handleResults = json => {
+  if (json.success) {
+    if (json.data.memes.length) {
       g('image-wrap').innerHTML = ''
-      jsonGet.data.memes.forEach(meme => {
+      json.data.memes.forEach(meme => {
         const img = insert(g('image-wrap'), 'img')
         img.alt = meme.name
         img.dataset.id = meme.id
@@ -34,20 +50,12 @@ getImagesButton.addEventListener('click', e => {
         })
       })
     } else {
-      handleError(json.error_message)
+      g('image-wrap').innerHTML = 'Hmm, couldn’t find any images for that. Try again!'
     }
-    g('image-wrap').classList.remove('loading')
-  })
-})
-
-const imgflipGet = async () => {
-  console.log('api.imgflip.com/get_memes …')
-  try {
-    const response = await fetch(`https://api.imgflip.com/get_memes`)
-    return response.json()
-  } catch (error) {
-    handleError(error)
+  } else {
+    handleError(json.error_message)
   }
+  g('image-wrap').classList.remove('loading')
 }
 
 const imgflipCap = async (id, text) => {
@@ -63,6 +71,34 @@ const imgflipCap = async (id, text) => {
     // formData.append('text1', text)
     // formData.append('boxes', text)
     const response = await fetch(`https://api.imgflip.com/caption_image`, {
+      method: 'POST',
+      body: formData,
+    })
+    return response.json()
+  } catch (error) {
+    handleError(error)
+  }
+}
+
+const imgflipGet = async () => {
+  console.log('api.imgflip.com/get_memes …')
+  try {
+    const response = await fetch(`https://api.imgflip.com/get_memes`)
+    return response.json()
+  } catch (error) {
+    handleError(error)
+  }
+}
+
+const imgflipSearch = async query => {
+  console.log('api.imgflip.com/search_memes …')
+  try {
+    const formData = new FormData()
+    formData.append('username', 'MoonaDesign')
+    formData.append('password', 'never-not-learning')
+    formData.append('query', query)
+    // formData.append('nsfw', 1)
+    const response = await fetch(`https://api.imgflip.com/search_memes`, {
       method: 'POST',
       body: formData,
     })

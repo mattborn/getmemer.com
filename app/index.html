@@ -73,7 +73,7 @@
         <section>
           <label for="meme-text">Base prompt</label>
           <textarea id="base-prompt" placeholder="Whatcha thinkin?" required></textarea>
-          <div id="actions"></div>
+          <div class="actions" id="base-actions"></div>
         </section>
         <!--<section>
           <h3>Shape your voice</h3>
@@ -82,12 +82,12 @@
         <section>
           <label for="meme-text">Meme text</label>
           <input id="meme-text" placeholder="Leave blank to let Memer draft for you" required />
+          <div class="actions" id="text-actions"></div>
         </section>
         <section>
           <h3>Image bank</h3>
-          <div class="options">
-            <div class="option selected">Popular</div>
-          </div>
+          <input id="search" placeholder="top 100 most popular" />
+          <div class="actions" id="search-actions"></div>
           <div id="image-wrap"></div>
         </section>
         <p>
@@ -98,18 +98,20 @@
       <div id="preview">
         <h3>Preview</h3>
         <div class="options">
-          <div class="option selected">All</div>
+          <div class="option">All</div>
+          <div class="option selected">LinkedIn</div>
+          <div class="option">Twitter X</div>
         </div>
         <div class="preview-linkedin">
           <div class="inset">
             <div class="meme-text">Meme text goes here</div>
           </div>
-          <img class="meme-image" src="https://placehold.co/600x400" />
+          <img class="meme-image" src="https://placehold.co/600x400/eee9e3/f86" />
         </div>
-        <div class="preview-twitter">
+        <!--<div class="preview-twitter">
           <div class="meme-text">Meme text goes here</div>
           <img class="meme-image" src="https://placehold.co/600x400" />
-        </div>
+        </div>-->
       </div>
     </div>
   </body>

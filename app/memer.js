@@ -9,7 +9,7 @@ const insert = (target = document.body, tag = 'div') => {
 
 // generate text
 
-const genTextButton = insert(g('actions'), 'button')
+const genTextButton = insert(g('base-actions'), 'button')
 genTextButton.textContent = 'Generate text'
 genTextButton.addEventListener('click', e => {
   const base_prompt = g('base-prompt').value
@@ -39,7 +39,7 @@ genTextButton.addEventListener('click', e => {
 
 // generate text & image AKA automeme
 
-const genAutoButton = insert(g('actions'), 'button')
+const genAutoButton = insert(g('base-actions'), 'button')
 genAutoButton.textContent = 'Generate text & image'
 genAutoButton.addEventListener('click', e => {
   const base_prompt = g('base-prompt').value

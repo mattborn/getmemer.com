@@ -105,7 +105,12 @@ section {
   padding: 1.5rem 0;
 }
 
-#actions {
+.options {
+  display: flex;
+  gap: 8px;
+}
+
+.actions {
   display: flex;
   gap: 8px;
 }
@@ -123,8 +128,9 @@ section {
 .preview-linkedin,
 .preview-twitter {
   background: var(--background);
-  border: 1px solid #0006;
   border-radius: 12px;
+  box-shadow: 0 1rem 1.5rem -1rem #0004;
+  overflow: hidden;
 }
 
 .preview-twitter,
@@ -186,6 +192,12 @@ button:hover {
 a {
   color: #a55;
   text-decoration: none;
+}
+
+.selected {
+  color: var(--color-accent);
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .loading {
