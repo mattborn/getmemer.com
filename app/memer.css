@@ -12,6 +12,13 @@
   --gray-warm-100: #eee9e380;
 }
 
+@supports (color: color(display-p3 1 0 0)) {
+  :root {
+    --color-primary: color(display-p3 0.666667 0.333333 0.333333);
+    --color-accent: color(display-p3 1 0.533333 0.4);
+  }
+}
+
 .dark {
   --background: #0c111d;
   --gray-400: #85888e;
@@ -50,13 +57,6 @@ header {
   color: var(--color-primary);
   display: flex;
   gap: 12px;
-}
-
-.square {
-  background: linear-gradient(var(--color-primary), var(--color-accent));
-  border-radius: 8px;
-  height: 3rem;
-  width: 3rem;
 }
 
 .badge {

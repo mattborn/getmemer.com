@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;700;900&display=swap');
+
+/* cascade */
+
+:root {
+  --background: white;
+  --color-primary: #a55;
+  --color-accent: #f86;
+  --gray-400: #98a2b3;
+  --gray-600: #475467;
+  --gray-900: #1d2939;
+  --gray-warm-100: #eee9e380;
+}
+
+@supports (color: color(display-p3 1 0 0)) {
+  :root {
+    --color-primary: color(display-p3 0.666667 0.333333 0.333333);
+    --color-accent: color(display-p3 1 0.533333 0.4);
+  }
+}
+
+.dark {
+  --background: #0c111d;
+  --gray-400: #85888e;
+  --gray-600: #94969c;
+  --gray-900: #f5f5f6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  background: var(--background);
+  color: var(--gray-600);
+  font: 500 100%/1 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0;
+  text-rendering: optimizeLegibility;
+}
+
+/* reset */
+
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* quick and dirty layout */
+
+body {
+  padding: 4.5rem 2rem;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 2rem;
+  width: 100%;
+}
+
+#nav {
+  align-items: center;
+  background: var(--background);
+  /* border-radius: 2.5rem; */
+  border-radius: 1rem;
+  box-shadow: 0 1rem 1.5rem -1rem #0004;
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.brand {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+}
+.brand-name {
+  color: var(--color-primary);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.button {
+  background: linear-gradient(to right, var(--color-primary), var(--color-accent));
+  border-radius: 6px;
+  color: var(--background);
+  font-weight: 700;
+  padding: 12px;
+}
+
+#inset {
+  background: var(--gray-warm-100);
+  border-radius: 2rem;
+  padding: 5rem;
+}
+
+#hero {
+  align-items: center;
+  background: var(--background);
+  border-radius: 1.5rem;
+  box-shadow: 0px 1.5rem 3rem -1.5rem #0008;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+}
+
+.stack {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 50rem;
+}
+
+.preamble {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+h1 {
+  color: var(--gray-900);
+  font-size: 4.5rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 5rem;
+  margin: 0;
+}
+
+.lede {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
