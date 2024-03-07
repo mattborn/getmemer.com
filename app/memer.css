@@ -99,7 +99,15 @@ header {
 }
 
 section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   padding: 1.5rem 0;
+}
+
+#actions {
+  display: flex;
+  gap: 8px;
 }
 
 #preview {
@@ -150,14 +158,12 @@ label {
   font-size: 1rem;
   font-weight: 700;
   display: block;
-  margin: 0 0 1rem;
 }
 
 button,
 input,
 textarea {
   border-radius: 8px;
-  cursor: pointer;
   font: inherit;
   padding: 12px;
 }
@@ -171,11 +177,19 @@ button {
   background: var(--color-primary);
   border: none;
   color: var(--background);
+  cursor: pointer;
+}
+button:hover {
+  background: var(--color-accent);
 }
 
 a {
   color: #a55;
   text-decoration: none;
+}
+
+.loading {
+  opacity: 0.3;
 }
 
 /* imgflip-get */

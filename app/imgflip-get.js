@@ -1,8 +1,9 @@
 const getImagesButton = insert(g('image-wrap'), 'button')
 getImagesButton.textContent = 'Get images'
 getImagesButton.addEventListener('click', e => {
+  g('error-bar').click()
   getImagesButton.disabled = true
-  document.body.classList.add('loading')
+  g('image-wrap').classList.add('loading')
 
   imgflipGet().then(jsonGet => {
     if (jsonGet.success) {
@@ -13,6 +14,11 @@ getImagesButton.addEventListener('click', e => {
         img.dataset.id = meme.id
         img.src = meme.url
         img.addEventListener('click', e => {
+          window.scroll({
+            behavior: 'smooth',
+            left: 0,
+            top: 0,
+          })
           if (g('meme-text').value) {
             imgflipCap(meme.id, g('meme-text').value).then(jsonCap => {
               if (jsonCap.success) {
@@ -30,11 +36,12 @@ getImagesButton.addEventListener('click', e => {
     } else {
       handleError(json.error_message)
     }
+    g('image-wrap').classList.remove('loading')
   })
 })
 
 const imgflipGet = async () => {
-  console.log('api.imgflip.com/get_memes…')
+  console.log('api.imgflip.com/get_memes …')
   try {
     const response = await fetch(`https://api.imgflip.com/get_memes`)
     return response.json()
@@ -44,16 +51,16 @@ const imgflipGet = async () => {
 }
 
 const imgflipCap = async (id, text) => {
-  console.log('api.imgflip.com/caption_image…')
+  console.log('api.imgflip.com/caption_image …')
   try {
     const formData = new FormData()
     formData.append('username', 'MoonaDesign')
     formData.append('password', 'never-not-learning')
     formData.append('template_id', id)
-    formData.append('font', 'Inter')
-    formData.append('max_font_size', '40')
-    // formData.append('text0', text)
-    formData.append('text1', text)
+    // formData.append('font', 'Inter')
+    // formData.append('max_font_size', '40')
+    formData.append('text0', text)
+    // formData.append('text1', text)
     // formData.append('boxes', text)
     const response = await fetch(`https://api.imgflip.com/caption_image`, {
       method: 'POST',

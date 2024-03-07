@@ -6,9 +6,10 @@
     <link rel="stylesheet" href="memer.css" />
     <!-- <script defer src="https://kit.fontawesome.com/0bef9420dc.js" crossorigin="anonymous"></script> -->
     <!-- <script defer src="https://unpkg.com/scrollreveal@4.0.7"></script> -->
+    <script defer src="openai.js"></script>
     <script defer src="memer.js"></script>
     <script defer src="imgflip-get.js"></script>
-    <!-- <script>
+    <script>
       ;(function (c, l, a, r, i, t, y) {
         c[a] =
           c[a] ||
@@ -21,7 +22,7 @@
         y = l.getElementsByTagName(r)[0]
         y.parentNode.insertBefore(t, y)
       })(window, document, 'clarity', 'script', 'kgt38bqmrh')
-    </script> -->
+    </script>
   </head>
   <body>
     <header>
@@ -51,16 +52,16 @@
         </section>-->
         <section>
           <label for="meme-text">Base prompt</label>
-          <textarea id="base-prompt" required></textarea>
+          <textarea id="base-prompt" placeholder="Whatcha thinkin?" required></textarea>
+          <div id="actions"></div>
         </section>
         <!--<section>
           <h3>Shape your voice</h3>
           <p>What reaction do you want?</p>
         </section>-->
-        <section id="actions"></section>
         <section>
           <label for="meme-text">Meme text</label>
-          <input id="meme-text" required />
+          <input id="meme-text" placeholder="Leave blank to let Memer draft for you" required />
         </section>
         <section>
           <h3>Image bank</h3>
