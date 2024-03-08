@@ -53,7 +53,11 @@
       </div>
       <div id="bookmarklet-bar">
         <p>bookmarklet →</p>
-        <div id="bookmarklet">〽️ Meme this</div>
+        <a
+          class="bookmarklet"
+          href="javascript:(()=>{z=document.getElementsByTagName('script')[0];s=document.createElement('script');s.src=`https://rawcdn.githack.com/mattborn/getmemer.com/main/meme/r.js?v=${Date.now()}`;z.parentNode.insertBefore(s,z)})()"
+          >〽️ Meme this</a
+        >
         <p>← drag ⤴</p>
       </div>
     </header>

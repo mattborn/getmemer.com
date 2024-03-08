@@ -150,7 +150,7 @@ p {
   margin: 0;
 }
 
-#bookmarklet {
+.bookmarklet {
   background: var(--gray-warm-100);
   border-radius: 20px;
   color: var(--gray-900);
