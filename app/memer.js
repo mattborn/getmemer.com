@@ -21,8 +21,9 @@ genTextButton.addEventListener('click', e => {
       role: 'user',
       content: `Return a single JSON object copying this schema: ${JSON.stringify({
         meme_text: `write meme copy about ${base_prompt}`,
-      })} and use the values as hints for what to generate.`,
+      })}, use the values as hint, and do something creative and different this time.`,
     })
+    console.log(sessionStream)
     gpt4(sessionStream).then(text => {
       const json = toJSON(text)
       const { meme_text } = json
@@ -50,9 +51,10 @@ genAutoButton.addEventListener('click', e => {
     sessionStream.push({
       role: 'user',
       content: `Return a single JSON object copying this schema: ${JSON.stringify({
-        meme_text: `rewrite "${base_prompt}" into the visible text for the meme which should be short and pithy like typical memes and try to stick with one of these: one does not simply X OR i don't always X, but when I do Y OR X, X everywhere OR not sure if X or Y OR X y u no Y OR y u no X OR brace yourself(ves) X OR X all the Y OR X that would be great OR X too damn Y OR yo dawg X OR X gonna have a bad time OR am I the only one around here X OR what if I told you X OR X ain't nobody got time for that OR X I guarantee it OR X annnnd it's gone OR X bats an eye Y loses their minds OR back in my day X OR X but that's none of my business OR you get X you get X everybody gets X`,
+        meme_text: `rewrite "${base_prompt}" into the visible text for the meme which should be short and pithy like typical memes and try a different one of these: one does not simply X OR i don't always X, but when I do Y OR X, X everywhere OR not sure if X or Y OR X y u no Y OR y u no X OR brace yourself(ves) X OR X all the Y OR X that would be great OR X too damn Y OR yo dawg X OR X gonna have a bad time OR am I the only one around here X OR what if I told you X OR X ain't nobody got time for that OR X I guarantee it OR X annnnd it's gone OR X bats an eye Y loses their minds OR back in my day X OR X but that's none of my business OR you get X you get X everybody gets X`,
       })}`,
     })
+    console.log(sessionStream)
     gpt4(sessionStream).then(text => {
       const json = toJSON(text)
       const { meme_text } = json
